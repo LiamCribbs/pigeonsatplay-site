@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SAXON // Archive Terminal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Saxon lore archive terminal">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+  <header class="terminal-header">
+    <h1 class="brand">SAXON</h1>
+    <p class="subtitle">ARCHIVE TERMINAL // STANDING BY<span class="cursor"></span></p>
+  </header>
+
+  <main class="wrap">
+    <section class="panel" aria-label="Lore entry list">
+      <h2 class="panel-label">// ENTRIES</h2>
+      <ul class="entry-list" id="entry-list"></ul>
+    </section>
+
+    <section class="panel reader" aria-label="Lore entry contents">
+      <h2 class="reader-title" id="reader-title"></h2>
+      <div class="reader-body" id="reader-body"></div>
+    </section>
+  </main>
+
+  <footer class="terminal-footer">
+    SAXON ARCHIVE SYSTEM &mdash; ALL RECORDS UNVERIFIED
+  </footer>
+
+  <script src="lore-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

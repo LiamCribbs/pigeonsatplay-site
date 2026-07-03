@@ -1,0 +1,287 @@
+/* FONTS — change the two variables below to swap typefaces.
+   Make sure any font you reference here is also loaded in the @import
+   (or a <link> in index.html) with the weights you use. */
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500;700;900&display=swap');
+
+/* Local fonts — drop font files into saxon/fonts/, then point src at them
+   and switch the matching --font-* variable below to the family name you
+   pick here. Delete any @font-face block you don't end up using. */
+@font-face {
+  font-family: 'Local Display';
+  src: url('fonts/HelveticaNowExtraBold.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Local Mono';
+  src: url('fonts/AntikorMonoRegular.ttf') format('truetype'),
+       url('fonts/AntikorMonoExtraBold.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Local Display', sans-serif;   /* brand, headings, labels, buttons */
+  --font-mono: 'Local Mono', monospace; /* body / reading text */
+
+  --red: #ff2a2a;
+  --red-dim: #7a1414;
+  --red-glow: rgba(255, 42, 42, 0.65);
+  --bg: #060404;
+  --bg-panel: #0c0808;
+  --border: #4a1010;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--red);
+  font-family: var(--font-mono);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Scanline + vignette overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 42, 42, 0.035),
+    rgba(255, 42, 42, 0.035) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 49;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.82; }
+  94% { opacity: 1; }
+  96% { opacity: 0.88; }
+  97% { opacity: 1; }
+}
+
+.crt {
+  animation: flicker 6s infinite;
+}
+
+/* Header */
+header.terminal-header {
+  padding: 1.5rem 2rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  letter-spacing: 0.4em;
+  color: var(--red);
+  text-shadow: 0 0 6px var(--red-glow), 0 0 20px var(--red-glow), 0 0 40px rgba(255,42,42,0.3);
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--red-dim);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+
+.subtitle .cursor {
+  display: inline-block;
+  width: 0.6em;
+  background: var(--red);
+  animation: blink 1s steps(1) infinite;
+  margin-left: 0.2em;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Layout */
+main.wrap {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  main.wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: var(--bg-panel);
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.panel-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--red-dim);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* Entry list buttons */
+.entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.entry-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--red-dim);
+  border: 1px solid var(--border);
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.entry-btn .code {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.entry-btn:hover {
+  color: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 10px var(--red-glow), inset 0 0 10px rgba(255,42,42,0.08);
+  background: rgba(255, 42, 42, 0.05);
+}
+
+.entry-btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.entry-btn.active {
+  color: var(--red);
+  border-color: var(--red);
+  background: rgba(255, 42, 42, 0.08);
+  box-shadow: 0 0 14px var(--red-glow), inset 0 0 14px rgba(255,42,42,0.12);
+}
+
+.entry-btn.active::before {
+  content: ">";
+  position: absolute;
+  left: -1.1rem;
+  color: var(--red);
+  text-shadow: 0 0 6px var(--red-glow);
+}
+
+/* Reading pane */
+.reader {
+  display: flex;
+  flex-direction: column;
+}
+
+.reader-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  text-shadow: 0 0 8px var(--red-glow);
+  margin: 0 0 1rem;
+}
+
+.reader-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #ff8a8a;
+  white-space: pre-wrap;
+}
+
+.reader-body p {
+  margin: 0 0 1.1rem;
+}
+
+.reader-body .type-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--red);
+  vertical-align: -0.15em;
+  animation: blink 0.9s steps(1) infinite;
+  box-shadow: 0 0 6px var(--red-glow);
+}
+
+.reader-empty {
+  color: var(--red-dim);
+  font-style: italic;
+}
+
+/* Footer */
+footer.terminal-footer {
+  padding: 0.75rem 2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--red-dim);
+}
+
+/* Scrollbars */
+.panel::-webkit-scrollbar {
+  width: 8px;
+}
+.panel::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+.panel::-webkit-scrollbar-thumb {
+  background: var(--red-dim);
+}
