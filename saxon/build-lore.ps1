@@ -40,6 +40,39 @@ function ConvertTo-EntryCode {
   return "ENTRY-???"
 }
 
+# Splits body text into blocks: consecutive non-blank lines are merged into
+# one paragraph (internal newlines collapsed to spaces), but a "#" heading
+# line always starts and ends its own block -- even if it isn't surrounded
+# by blank lines -- since a heading is inherently a single line.
+function Get-Blocks {
+  param([string]$Text)
+  $blocks = New-Object System.Collections.Generic.List[string]
+  $buffer = New-Object System.Collections.Generic.List[string]
+
+  $flush = {
+    if ($buffer.Count -gt 0) {
+      $joined = (($buffer -join ' ') -replace '\s+', ' ').Trim()
+      if ($joined -ne '') { $blocks.Add($joined) }
+      $buffer.Clear()
+    }
+  }
+
+  foreach ($line in ($Text -split "`n")) {
+    $trimmed = $line.Trim()
+    if ($trimmed -eq '') {
+      & $flush
+    } elseif ($trimmed -match '^#{1,6}\s+') {
+      & $flush
+      $blocks.Add($trimmed)
+    } else {
+      $buffer.Add($line)
+    }
+  }
+  & $flush
+
+  return $blocks
+}
+
 $manifest = Get-Content -Path $manifestPath -Raw | ConvertFrom-Json
 
 $parts = foreach ($filename in $manifest) {
@@ -64,19 +97,16 @@ $parts = foreach ($filename in $manifest) {
     $bodyText = ($lines[$bodyStart..($lines.Count - 1)] -join "`n").Trim()
   }
 
-  # Each blank-line-separated block becomes either a heading (if it starts
-  # with 1-6 "#" characters) or a paragraph.
+  # Each block becomes either a heading (if it starts with 1-6 "#"
+  # characters) or a paragraph.
   $paragraphs = @(
-    [regex]::Split($bodyText, '\n\s*\n') |
-      ForEach-Object { ($_ -replace '\s+', ' ').Trim() } |
-      Where-Object { $_ -ne '' } |
-      ForEach-Object {
-        if ($_ -match '^(#{1,6})\s+(.*)$') {
-          [PSCustomObject]@{ tag = "h$($Matches[1].Length)"; html = ConvertTo-InlineHtml $Matches[2].Trim() }
-        } else {
-          [PSCustomObject]@{ tag = 'p'; html = ConvertTo-InlineHtml $_ }
-        }
+    Get-Blocks -Text $bodyText | ForEach-Object {
+      if ($_ -match '^(#{1,6})\s+(.*)$') {
+        [PSCustomObject]@{ tag = "h$($Matches[1].Length)"; html = ConvertTo-InlineHtml $Matches[2].Trim() }
+      } else {
+        [PSCustomObject]@{ tag = 'p'; html = ConvertTo-InlineHtml $_ }
       }
+    }
   )
 
   $entry = [PSCustomObject]@{
