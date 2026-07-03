@@ -90,9 +90,9 @@ body::after {
   97% { opacity: 1; }
 }
 
-.crt {
+/* .crt {
   animation: flicker 6s infinite;
-}
+} */
 
 /* Header */
 header.terminal-header {
