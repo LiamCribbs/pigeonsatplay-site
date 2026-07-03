@@ -25,8 +25,10 @@
   --font-display: 'Local Display', sans-serif;   /* brand, headings, labels, buttons */
   --font-mono: 'Local Mono', monospace; /* body / reading text */
 
-  --red: #ff2a2a;
-  --red-dim: #7a1414;
+  --red-rgb: 255, 42, 42;
+  --red: rgb(var(--red-rgb));
+  --red-dim-brightness: 0.65; /* 0 (black) – 1 (full red) — controls unselected/dim text brightness */
+  --red-dim: rgba(var(--red-rgb), var(--red-dim-brightness));
   --red-glow: rgba(255, 42, 42, 0.65);
   --bg: #060404;
   --bg-panel: #0c0808;
@@ -250,6 +252,27 @@ main.wrap {
   margin: 0 0 1.1rem;
 }
 
+.reader-body h1,
+.reader-body h2,
+.reader-body h3,
+.reader-body h4,
+.reader-body h5,
+.reader-body h6 {
+  font-family: var(--font-display);
+  color: var(--red);
+  text-shadow: 0 0 6px var(--red-glow);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  margin: 0.4rem 0 1rem;
+}
+
+.reader-body h1 { font-size: 1.2rem; }
+.reader-body h2 { font-size: 1.1rem; }
+.reader-body h3 { font-size: 1rem; }
+.reader-body h4,
+.reader-body h5,
+.reader-body h6 { font-size: 0.9rem; }
+
 .reader-body .type-cursor {
   display: inline-block;
   width: 0.55em;
@@ -273,6 +296,7 @@ footer.terminal-footer {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   color: var(--red-dim);
+  font-family: var(--font-display);
 }
 
 /* Scrollbars */
