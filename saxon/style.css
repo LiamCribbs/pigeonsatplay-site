@@ -3,26 +3,26 @@
    (or a <link> in index.html) with the weights you use. */
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500;700;900&display=swap');
 
-/* Local fonts — drop font files into saxon/fonts/, then point src at them
+/* Local fonts — drop font files into the root fonts/ folder, then point src at them
    and switch the matching --font-* variable below to the family name you
    pick here. Delete any @font-face block you don't end up using. */
 @font-face {
-  font-family: 'Local Display';
-  src: url('fonts/HelveticaNowExtraBold.ttf') format('truetype');
+  font-family: 'Clarity City';
+  src: url('../fonts/ClarityCity-Black.woff2') format('woff2');
   font-weight: 900;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Local Mono';
-  src: url('fonts/AntikorMonoRegular.ttf') format('truetype'),
-       url('fonts/AntikorMonoExtraBold.ttf') format('truetype');
+  src: url('../fonts/AntikorMonoRegular.ttf') format('truetype'),
+       url('../fonts/AntikorMonoExtraBold.ttf') format('truetype');
   font-weight: 100 900;
   font-display: swap;
 }
 
 :root {
-  --font-display: 'Local Display', sans-serif;   /* brand, headings, labels, buttons */
+  --font-display: 'Clarity City', sans-serif;   /* brand, headings, labels, buttons */
   --font-mono: 'Local Mono', monospace; /* body / reading text */
 
   --red-rgb: 255, 42, 42;

@@ -1,0 +1,296 @@
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --border: #e2e0db;
+  --accent: #FF3134;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141514;
+    --surface: #1d1f1d;
+    --text: #e8e8e4;
+    --muted: #9a9a94;
+    --border: #2e312e;
+    --accent: #FF3134;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Body text is Clarity City (SIL Open Font License, see
+   fonts/ClarityCity-LICENSE.md). Titles and headings use Antikor Mono
+   ExtraBold. */
+@font-face {
+  font-family: "Clarity City";
+  src: url("../fonts/ClarityCity-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clarity City";
+  src: url("../fonts/ClarityCity-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clarity City";
+  src: url("../fonts/ClarityCity-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clarity City";
+  src: url("../fonts/ClarityCity-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Antikor Mono";
+  src: url("../fonts/AntikorMonoExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Clarity City", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.note-title {
+  font-family: "Antikor Mono", ui-monospace, monospace;
+  font-weight: 800;
+  color: #FF3134;
+}
+
+.notes {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 16px 96px;
+}
+
+a {
+  color: var(--accent);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+/* Note page */
+
+.note-header {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.note-header h1 {
+  margin: 0 0 4px;
+}
+
+time {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+article h2 {
+  margin-top: 40px;
+  font-size: 1.4rem;
+}
+
+article h3 {
+  margin-top: 28px;
+  font-size: 1.15rem;
+}
+
+article ul,
+article ol {
+  padding-left: 1.4em;
+}
+
+article li + li {
+  margin-top: 4px;
+}
+
+article img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px 0;
+  border-radius: 6px;
+}
+
+article code {
+  padding: 2px 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+article pre {
+  overflow-x: auto;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+article pre code {
+  padding: 0;
+  border: 0;
+}
+
+article blockquote {
+  margin: 24px 0;
+  padding: 4px 16px;
+  color: var(--muted);
+  border-left: 3px solid var(--accent);
+}
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+
+article th,
+article td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+article hr {
+  margin: 40px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* Index page */
+
+.note-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.note-list a:hover .note-title {
+  color: var(--accent);
+}
+
+.note-list time {
+  flex-shrink: 0;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+/* Landing page: art background with the logo as the title. Colors are fixed
+   (not light/dark) since text always sits on top of the artwork. */
+
+body.landing {
+  --text: #f4f2f4;
+  --muted: #c9c3cc;
+  --border: rgba(255, 255, 255, 0.14);
+  --accent: #FF3134;
+  /* Where the logo ends: the page's top padding plus the logo's height (its
+     width, capped by .notes, divided by its 3.75 aspect ratio). */
+  --logo-bottom: calc(48px + min(728px, 100vw - 32px) / 3.75);
+  /* The fade into the page color starts this far above the logo's bottom
+     edge and ends this far below it; the patch notes start where it ends. */
+  --fade-above: 48px;
+  --fade-below: 40px;
+  background: #0e1116;
+}
+
+/* The art sits behind the top of the page and fades into the page color
+   just below the logo, scrolling away with the content. */
+body.landing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: max(100vh, calc(var(--logo-bottom) + var(--fade-below)));
+  z-index: -1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(14, 17, 22, 0.3) 0,
+      rgba(14, 17, 22, 0.3) calc(var(--logo-bottom) - var(--fade-above)),
+      #0e1116 calc(var(--logo-bottom) + var(--fade-below))
+    ),
+    url("../img/Background.jpg") center top / cover no-repeat;
+}
+
+.logo {
+  margin: 0 0 calc(var(--fade-below) + 40px);
+}
+
+/* The logo PNG has a lot of empty space above and below the lettering, so
+   crop to the middle band of the image. */
+.logo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3.75;
+  object-fit: cover;
+  object-position: 50% 38%;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55));
+}
+
+.landing h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--muted);
+}

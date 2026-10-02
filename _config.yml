@@ -1,0 +1,14 @@
+title: pigeonsatplay
+
+# Patch notes live in _patch_notes/ as markdown files. Each one is published
+# at /mycopunk/<filename>/ and listed on /mycopunk/.
+collections:
+  patch_notes:
+    output: true
+    permalink: /mycopunk/:name/
+
+defaults:
+  - scope:
+      type: patch_notes
+    values:
+      layout: patch-note

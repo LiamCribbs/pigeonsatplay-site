@@ -1,0 +1,28 @@
+---
+layout: mycopunk
+title: Mycopunk
+body_class: landing
+---
+<h1 class="logo">
+  <img src="{{ '/img/LOGO%20White.png' | relative_url }}" alt="Mycopunk">
+</h1>
+
+<section>
+  <h2>Patch Notes</h2>
+
+  {% assign notes = site.patch_notes | sort: "date" | reverse %}
+  {% if notes.size == 0 %}
+    <p class="empty">Roachard ate everything</p>
+  {% else %}
+    <ul class="note-list">
+      {% for note in notes %}
+        <li>
+          <a href="{{ note.url | relative_url }}">
+            <span class="note-title">{{ note.title }}</span>
+            <time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%b %-d, %Y" }}</time>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
