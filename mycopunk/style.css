@@ -294,3 +294,37 @@ body.landing::before {
   text-align: center;
   color: var(--muted);
 }
+
+/* Studio logo pinned to the bottom-right corner of the window. The page's
+   96px bottom padding leaves room to scroll the last note out from under it. */
+.studio-logo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 64px;
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Link to the Saxon archive pinned to the bottom-left corner, styled after
+   the archive terminal's red CRT look. */
+.saxon-link {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  font-family: "Antikor Mono", ui-monospace, monospace;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 42, 42, 0.7);
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.saxon-link:hover,
+.saxon-link:focus-visible {
+  color: rgb(255, 42, 42);
+  text-shadow: 0 0 6px rgba(255, 42, 42, 0.65), 0 0 18px rgba(255, 42, 42, 0.4);
+}

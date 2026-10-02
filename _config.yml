@@ -6,6 +6,10 @@ collections:
   patch_notes:
     output: true
     permalink: /mycopunk/:name/
+  # Saxon lore entries live in _lore/ as markdown files. They don't get pages
+  # of their own; saxon/lore-data.js bundles them for the archive terminal.
+  lore:
+    output: false
 
 defaults:
   - scope:

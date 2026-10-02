@@ -8,11 +8,11 @@ body_class: landing
 </h1>
 
 <section>
-  <h2>Patch Notes</h2>
+  <h2>Updates</h2>
 
   {% assign notes = site.patch_notes | sort: "date" | reverse %}
   {% if notes.size == 0 %}
-    <p class="empty">Roachard ate everything</p>
+    <p class="empty">Roachard ate everything.</p>
   {% else %}
     <ul class="note-list">
       {% for note in notes %}
@@ -26,3 +26,7 @@ body_class: landing
     </ul>
   {% endif %}
 </section>
+
+<a class="saxon-link" href="{{ '/saxon/' | relative_url }}">// Saxon Archive</a>
+
+<img class="studio-logo" src="{{ '/img/Pigeons.webp' | relative_url }}" alt="Pigeons at Play">

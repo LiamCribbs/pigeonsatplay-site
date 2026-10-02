@@ -13,11 +13,19 @@
   font-display: swap;
 }
 
+/* One @font-face per file: listing both files in a single src only uses the
+   second as a fallback, so bold text would never get the ExtraBold file. */
 @font-face {
   font-family: 'Local Mono';
-  src: url('../fonts/AntikorMonoRegular.ttf') format('truetype'),
-       url('../fonts/AntikorMonoExtraBold.ttf') format('truetype');
-  font-weight: 100 900;
+  src: url('../fonts/AntikorMonoRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Local Mono';
+  src: url('../fonts/AntikorMonoExtraBold.ttf') format('truetype');
+  font-weight: 800;
   font-display: swap;
 }
 
@@ -272,6 +280,99 @@ main.wrap {
 .reader-body h4,
 .reader-body h5,
 .reader-body h6 { font-size: 0.9rem; }
+
+.reader-body ul,
+.reader-body ol {
+  margin: 0 0 1.1rem;
+  padding-left: 1.5rem;
+}
+
+.reader-body li {
+  margin-bottom: 0.3rem;
+}
+
+.reader-body li::marker {
+  color: var(--red);
+}
+
+.reader-body li > ul,
+.reader-body li > ol,
+.reader-body li > p {
+  margin: 0.3rem 0 0;
+}
+
+.reader-body blockquote {
+  margin: 0 0 1.1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--red-dim);
+  color: rgba(242, 189, 189, 0.75);
+}
+
+.reader-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.reader-body a {
+  color: var(--red);
+  text-underline-offset: 0.2em;
+}
+
+.reader-body a:hover {
+  text-shadow: 0 0 6px var(--red-glow);
+}
+
+.reader-body code {
+  padding: 0 0.3em;
+  background: rgba(255, 42, 42, 0.08);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.reader-body pre {
+  margin: 0 0 1.1rem;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.reader-body pre code {
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.reader-body hr {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px dashed var(--border);
+}
+
+.reader-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 1.1rem;
+  border: 1px solid var(--border);
+}
+
+.reader-body table {
+  margin: 0 0 1.1rem;
+  border-collapse: collapse;
+}
+
+.reader-body th,
+.reader-body td {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.reader-body th {
+  font-family: var(--font-display);
+  color: var(--red);
+}
 
 .reader-body .type-cursor {
   display: inline-block;
