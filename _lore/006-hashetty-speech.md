@@ -1,0 +1,19 @@
+---
+---
+# Hashetty Speech
+
+`Excerpts from the personal notes of Dr. Shellem - Saxon Foreign Relations Specialist`
+
+The mechanics of Hashetty speech are not overwhelmingly difficult to grasp, provided you have never studied mammalian biology in the slightest. If you, like the majority of us, have, then this may be a little more difficult. I have attempted to avoid using comparisons to inanimate objects in my research notes, but without that restriction here I feel quite comfortable saying that the easiest way to understand how a Hashetty vocalizes is by thinking about them like they are each their own reed-quintet.
+
+Their mouths have between 36-48 muscles spread evenly throughout, giving the *entire* opening roughly the same maneuverability as a Human tongue. These muscles develop (God knows how) to shape the mouth into several airways depending on what the Hashetty intends to say. These airways push their breath through their ‘teeth’, which are (for lack of a better comparison) functionally similar to the reeds found in woodwind instruments, and many types of organ.
+
+(My colleagues are intent on using an old-Earth saxophone as the primary comparison in our report to the Saxon laymen. But they neither sound like saxophones, nor can they be coaxed into it. Although that is not without lack of trying.)
+
+The vibration of their teeth creates noises that most commonly resemble birdsong, though they can also range down into more buzzing low tones (Dr. Canners described it best as: a smartphone vibrating on the bottom of a large metal box). By ‘playing’ multiple teeth at a time, the Hashetty produce words that are comprised of several shifting tones on top of each other. Typically this is accompanied by another layer of constant underlying tones that indicate context, tense, mood, and general intent. This last bit has been rather hard for us to nail down, as almost all of our subjects universally speak to us with an underlying chord we have isolated as ‘hatred.’
+
+The Hashetty are individually responsible for building out their vocal range, using flat rocks, files, or sandpaper to tune their teeth as they see fit. This, naturally, includes a lot of cosmetic modification to said teeth. While they have the incredible freedom to tailor their voice to their liking, an unfortunate folly of this mechanism is that the Hashetty will lose access to part of their tonal range if any teeth are knocked out. (This was a massive inconvenience for my team. Especially when they started deliberately boxing the teeth out of their looser lipped compatriots during yard time). We noticed, however, that to combat this many of the Hashetty place their more commonly used tones on the sides of their mouth where they’re more easily defended in hand-to-hand combat.
+
+The actual Hashetty language itself is a different question altogether. Since words are made with so many components, it is difficult to tell whether a Hashetty is saying an entirely new word, or multiple at the same time. Nouns seemed like an easy baseline, though even this was proven potentially unreliable when Dr. Kasmari found significant evidence that her group was actually referring to her with a combination of the word ‘scientist’ and the word ‘fucker,’ which we had originally assumed to be their version of her name. It is little wonder why initial communication was exclusively conducted by getting them to understand Galactic Common, instead of the other way around.
+
+Ultimately I do not see us building an effective translation without proper cooperation, which thus far has proven impossible to force or fabricate in any of the subjects. The existence of discernible dialects only complicates this further, and I fear the only way we may reach a significant breakthrough is via Kasmari’s brainwave mapping. But while I believe that her methods are promising, we simply do not have enough subjects at our disposal to keep up with her demand.
