@@ -128,8 +128,74 @@ h1 {
   line-height: 1.2;
 }
 
+/* Leave a little room above a heading when jumping to it from the TOC. */
+article h1 {
+  scroll-margin-top: 24px;
+}
+
+/* Section links. On narrow screens they sit under the note header; on wide
+   screens they're pinned in the empty space left of the content column. */
+.note-toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.note-toc a {
+  font-family: "Antikor Mono", ui-monospace, monospace;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.note-toc a:hover,
+.note-toc a:focus-visible {
+  color: var(--accent);
+}
+
+@media (min-width: 1200px) {
+  .note-toc {
+    position: fixed;
+    top: 32px;
+    /* .notes is 760px wide and centered; sit 24px left of it. */
+    left: calc(50% - 380px - 180px - 24px);
+    width: 180px;
+  }
+
+  .note-toc ul {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+
+  /* Red triangle before each link, centered on the first line so headings
+     that wrap stay indented past it. The line's middle (0.8em) sits below
+     the middle of all-caps text, so it's nudged up 0.1em. */
+  .note-toc a {
+    position: relative;
+    display: block;
+    padding-left: 14px;
+  }
+
+  .note-toc a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(0.7em - 4px);
+    border-left: 6px solid var(--accent);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+}
+
 article h2 {
-  margin-top: 40px;
+  margin-top: 64px;
   font-size: 1.4rem;
 }
 
@@ -152,7 +218,7 @@ article img {
   max-width: 100%;
   height: auto;
   margin: 24px 0;
-  border-radius: 6px;
+  border-radius: 9px;
 }
 
 article code {

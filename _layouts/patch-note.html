@@ -9,5 +9,20 @@ layout: mycopunk
     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
   </header>
 
+  {% comment %} Links to each # heading in the note, pulled from the rendered
+     HTML (kramdown gives every heading an id). {% endcomment %}
+  {% assign sections = content | split: '<h1 id="' %}
+  {% if sections.size > 1 %}
+    <nav class="note-toc" aria-label="Sections">
+      <ul>
+        {% for section in sections offset: 1 %}
+          {% assign id = section | split: '"' | first %}
+          {% assign heading = section | split: '</h1>' | first | remove_first: id | remove_first: '">' | strip_html %}
+          <li><a href="#{{ id }}">{{ heading }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+
   {{ content }}
 </article>
